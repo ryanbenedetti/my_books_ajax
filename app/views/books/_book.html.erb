@@ -1,0 +1,92 @@
+<div class="col-md-4 blog-main box text-center" id="book_<%= book.id %>">
+
+            <div class="panel panel-info"><!-- Panel Info -->
+
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><%= book.title %></h3>
+                    <p><%= book.author %></p>
+                  </div>
+
+                  <div class="panel-body"><!-- Panel Body -->
+                    <div style="color: #3BB2D6;"><%= time_ago_in_words(book.created_at) %></div>
+                    <br>
+
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myupdatebook_<%= book.id %>">
+                          Edit
+                        </button>
+                        <%= link_to 'Destroy', book, method: :delete, class: "btn btn-danger", remote: true %>
+                    </div>
+                  </div><!-- Panel Body -->
+
+            </div><!-- Panel Info -->
+
+
+            <!-- Modal - update book -->
+                  <%= form_for(book, :method => :put, remote: true) do |f| %>
+                  <div class="modal fade" id="myupdatebook_<%= book.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+                      </div>
+                      <div class="modal-body">
+
+                      <div class="field">
+                        <%= f.label :author %>
+                        <%= f.text_area :author, class: "form-control book_authoråå" %>
+                      </div>
+
+                      <div class="field">
+                        <%= f.label :title %>
+                        <%= f.text_area :title, class: "form-control book_title" %>
+                      </div>
+
+                      <div class="field">
+                        <%= f.label :pages %>
+                        <%= f.number_field :pages, class: "form-control book_pages" %>
+                      </div>
+
+                      <div class="field">
+                        <%= f.label :publisher %>
+                        <%= f.text_area :publisher, class: "form-control book_publisher" %>
+                      </div>
+
+                      <div class="field">
+                        <%= f.label :pub_date %>
+                        <%= f.date_field :pub_date, class: "form-control book_pub_date" %>
+                      </div>
+
+                      <div class="field">
+                        <%= f.label :isbn %>
+                        <%= f.text_area :isbn, class: "form-control book_isbn" %>
+                      </div>
+
+                      <div class="field">
+                        <%= f.label :genre %>
+                        <%= f.text_area :genre, class: "form-control book_genre" %>
+                      </div>
+
+                      <div class="field">
+                        <%= f.label :category %>
+                        <%= f.text_area :category, class: "form-control book_category" %>
+                      </div>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" id="myupdatebutton_<%= book.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <%= submit_tag "Update", class: "btn btn-primary" %>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <% end %>
+            <!-- Modal -->
+
+
+</div>
+
+
+
+

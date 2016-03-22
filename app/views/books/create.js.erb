@@ -1,0 +1,6 @@
+$("#mybookmodal").modal('hide');
+$(".book_title").val('');
+$(".book_content").val('');
+
+$('#container_books').prepend('<%= j render @book %>');
+$("#book_<%= @book.id %>").hide().fadeIn(1000);
